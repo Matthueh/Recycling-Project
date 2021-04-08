@@ -236,7 +236,7 @@ public class Sort {
 				cabinet++;
 			}
 		}
-		if(legs + arms + cushion >= parts * 3) {
+		if(rails + drawers + cabinet >= parts * 3) {
 			return true;
 		}
 		else {
