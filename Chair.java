@@ -23,7 +23,7 @@ public class Chair {
 	 * @param manuId will be used for setter method to set manuId argument. 
 	 */
 	public Chair(String ID, String type, char legs, char arms, char seat, char cushion, 
-													int price, String manuId) {
+				int price, String manuId) {
 		setID(ID);
 		setType(type);
 		setLegs(legs);
@@ -67,6 +67,20 @@ public class Chair {
 			this.legs = false;
 		}
 	}
+	
+	/**
+	 * This is a setter method that will be used to set legs to a boolean value.
+	 * @param bool will be a boolean argument that we will check in order to place an argument
+	 * into class argument legs.
+	 */
+	public void setLegs(boolean bool) {
+		if(bool) {
+			this.legs = true;
+		}
+		else {
+			this.legs = false;
+		}
+	}
 	/**
 	 * This is a setter method that will be used to set arms to a boolean value. 
 	 * @param arms will be the argument that we will check in order to place an argument
@@ -83,6 +97,19 @@ public class Chair {
 			this.legs = false;
 		}
 	}
+	/**
+	 * This is a setter method that will be used to set Arms to a boolean value.
+	 * @param arms will be the boolean argument that we will check in order to place an argument
+	 * into class argument arms.
+	 */
+	public void setArms(boolean arms) {
+		if(arms) {
+			this.arms = true;
+		}
+		else {
+			this.arms = false;
+		}
+	}
 	
 	/**
 	 * This is a setter method that will be used to set seat to a boolean value.
@@ -93,6 +120,19 @@ public class Chair {
 		//This will check the char for seat in the database.
 		//It will then put a boolean in seat whether it exits or not.
 		if(seat == 'Y') {
+			this.seat = true;
+		}
+		else {
+			this.seat = false;
+		}
+	}
+	/**
+	 * This is a setter method that will be used to set seat to a boolean value.
+	 * @param seat will be the boolean argument that we will check in order to place an argument
+	 * into class argument seat.
+	 */
+	public void setSeat(boolean seat) {
+		if(seat) {
 			this.seat = true;
 		}
 		else {
@@ -114,6 +154,19 @@ public class Chair {
 		else {
 			this.cushion = false;
 		}	
+	}
+	/**
+	 * This is a setter method that will be used to set cushion to a boolean value.
+	 * @param cushion will be the boolean argument that we will check in order to place an argumetn
+	 * into class argument cushion.
+	 */
+	public void setCushion(boolean cushion) {
+		if(cushion) {
+			this.cushion = true;
+		}
+		else {
+			this.cushion = false;
+		}
 	}
 	
 	/**
