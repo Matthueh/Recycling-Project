@@ -15,6 +15,7 @@ public class ObjectCreationTest {
 	//This will test getChairs
 	public void testDataBaseConstructorGetChairs0Type() {
 		Database data = new Database(DBURL, Username, Password); // We will have to get database from Alex.
+		data.initializeConnection();
 		
 		//Here we are going to create an array of what expected chair Id's are going to be for the type Task
 		String [] Task = {
@@ -87,7 +88,7 @@ public class ObjectCreationTest {
 	//This will be getDesks.
 	public void testDataBaseConstructorGetDesks0Type() {
 		Database data = new Database(DBURL, Username, Password);
-		
+		data.initializeConnection();
 		
 		//These are the expected outputs
 		String [] Traditional = {
@@ -135,10 +136,100 @@ public class ObjectCreationTest {
 		
 	}
 	
+	public void testDataBaseConstructorGetFilings0Type() {
+		
+		Database data = new DataBase(DBURL, Username, Password);
+		data.initilizeConnection();
+		
+		//These are the expected outputs
+		String [] Small = {
+				"F001",
+				"F004",
+				"F005",
+				"F006",
+				"F013"
+		};
+		
+		String [] Medium = {
+				"F002",
+				"F007",
+				"F008",
+				"F009",
+				"F014"
+		};
+		
+		String [] Large = {
+				"F003",
+				"F010",
+				"F011",
+				"F012",
+				"F015"
+		};
+		
+		ArrayList<Filing> filing  = data.getFilings("Small");
+		String [] tmpArray = getArrayFilingId(filing);
+		
+		assertTrue("Method getFilings(String type) doesn't handle getting type Small.", Arrays.equals(Small, tmpArray));
+		
+		filing = data.getFiling("Medium");
+		tmpArray = getArrayFilingId(filing);
+		
+		assertTrue("Method getFilings(String type) doesn't handle getting type Medium", Arrays.equals(Medium, tmpArray));
+		
+		filing = data.getFiling("Large");
+		tmpArray = getArrayFilingId(filing);
+		
+		assertTrue("Method getFilings(String type) doesn't handlge getting type Large", Arrays.equals(Large, tmpArray));
+		
+	}
 	
-	
-	
-	
+	public void testDataBaseConstructorGetLamps0Type() {
+		
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		
+		//These are expected outputs
+		String [] Desk = {
+			"L013",
+			"L112",
+			"L132",
+			"L208",
+			"L342",
+			"L564",
+			"L649"
+		};
+		String [] SwingArm = {
+			"L053",
+			"L096",
+			"L487",
+			"L879"
+		};
+		
+		String [] Study = {
+			"L223",
+			"L928",
+			"L980",
+			"L982",
+		};
+		
+		ArrayList<Lamp> Lamp  = data.getFilings("Desk");
+		String [] tmpArray = getArrayLampId(Lamp);
+		
+		assertTrue("Method getFilings(String type) doesn't handle getting type Small.", Arrays.equals(Desk, tmpArray));
+		
+		Lamp = data.getFiling("SwingArm");
+		tmpArray = getArrayLampId(Lamp);
+		
+		assertTrue("Method getFilings(String type) doesn't handle getting type Medium", Arrays.equals(SwingArm, tmpArray));
+		
+		Lamp = data.getFiling("Study");
+		tmpArray = getArrayLampId(Lamp);
+		
+		assertTrue("Method getFilings(String type) doesn't handlge getting type Large", Arrays.equals(Study, tmpArray));
+		
+		
+		
+	}
 	
 	//These are helper methods
 	
