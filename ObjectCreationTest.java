@@ -12,7 +12,7 @@ public class ObjectCreationTest {
 	String Password = "";
 	
 	@Test
-	//We are going to first test whether if the values from the data base have been successfully been loaded up.
+	//This will test getChairs
 	public void testDataBaseConstructorGetChairs0Type() {
 		Database data = new Database(DBURL, Username, Password); // We will have to get database from Alex.
 		
@@ -49,52 +49,137 @@ public class ObjectCreationTest {
 		
 		//Retrieve list of chairs of type task, convert it to an array.
 		ArrayList<Chair> chair = data.getChairs("Task");
-		String[] tmpArray = getArrayId(chair);
+		String [] tmpArray = getArrayChairId(chair);
 		
 		//Checking that getChairs is actually working for type task
 		assertTrue("Method getChairs(String type) doesn't handle getting type Task from the listed chairs.", Arrays.equals(Task, tmpArray));
 		
 		//Reassigning list of chairs of type mesh, convert it to an array.
 		chair = data.getChairs("Mesh");
-		tmpArray = getArrayId(chair);
+		tmpArray = getArrayChairId(chair);
 		
 		//Checking that getChairs is actually working for type mesh. 
 		assertTrue("Method getChairs(String type) doesn't handle getting type Mesh from the listed chairs.", Arrays.equals(Mesh,  tmpArray));
 		
 		//Reassigning list of chairs of type Kneeling, convert it to an array.
 		chair = data.getChairs("Kneeling");
-		tmpArray = getArrayId(chair);
+		tmpArray = getArrayChairId(chair);
 		
 		//Checking that getChairs is actually working for type Kneeling.
 		assertTrue("Method getChairs(String type) doesn't handle getting type Kneeling from the listed chairs.", Arrays.equals(Kneeling, tmpArray));
 		
 		//Retrieve list of chairs of type Executive 
 		chair = data.getChairs("Executive");
-		tmpArray = getArrayId(chair);
+		tmpArray = getArrayChairId(chair);
 		
 		//Checking that getChairs is actually working for type Executive.
 		assertTrue("Method getChairs(String type) doesn't handle getting type Executive from the listed chairs.", Arrays.equals(Executive, tmpArray));
 		
 		//Retrieve list of chairs of type Ergonomic.
 		chair = data.getChairs("Ergonomic");
-		tmpArray = getArrayId(chair);
+		tmpArray = getArrayChairId(chair);
 		
 		//Checking that getChairs is actually working for type Executive.
 		assertTrue("Method get Chairs(string type) doesn't handle getting type Ergonomic from the listed chairs.", Arrays.equals(Ergonomic, tmpArray));	
 	}
 	
 	@Test
+	//This will be getDesks.
 	public void testDataBaseConstructorGetDesks0Type() {
-		//Database data = new Database(DBURL, Username, Password);
+		Database data = new Database(DBURL, Username, Password);
+		
+		
+		//These are the expected outputs
+		String [] Traditional = {
+			"D0890",
+			"D4231",
+			"D8675",
+			"D9352"
+		};
+		String [] Adjustable = {
+				"D1030",
+				"D2746",
+				"D3682",
+				"D4475",
+				"D5437",
+				"D7373"
+		};
+		String [] Standing = {
+				"D1927",
+				"D2341",
+				"D3820",
+				"D4438",
+				"D9387"
+		};
+		
+		//Retrieve list of desks of type Traditional
+		ArrayList<Desk> desk = data.getDesks("Traditional");
+		String [] tmpArray = getArrayDeskId(desk);
+		
+		//Checking whether getDesks method is actually working
+		assertTrue("Method getDesks(String type) doesn't handle getting type Traditional from listed desks.", Arrays.equals(Traditional, tmpArray));
+		
+		//Retrieving list of desks of type Adjustable
+		desk = data.getDesks("Adjustable");
+		tmpArray = getArrayDeskId(desk);
+		
+		//Checking whether getDesks method is actually working
+		assertTrue("Method getDesks(String type) doesn't handle getting type Adjustable from listed desks.", Arrays.equals(Adjustable, tmpArray));
+		
+		//Retrieving list of desks of type Standing
+		desk = data.getDesks("Standing");
+		tmpArray = getArrayDeskId(desk);
+		
+		//Checking whether getDesks method is actually working
+		assertTrue("Method getDesks(String type) doesn't handle getting type Standing from listed desks.", Arrays.equals(Standing, tmpArray));
+		
 	}
 	
 	
-	//Got to fix this
-	public String[] getArrayId(ArrayList<Chair> data) {
+	
+	
+	
+	
+	//These are helper methods
+	
+	public String[] getArrayChairId(ArrayList<Chair> data) {
 		ArrayList<String> tmp = new ArrayList<String>();
 		if(data != null && data.isEmpty() == false) {
 			for(int i = 0; i < data.size() ; i++ ) {
-				tmp.add(data.get(i).getId());
+				tmp.add(data.get(i).getID());
+			}
+		}
+		String [] tmpArray = tmp.toArray(new String[tmp.size()]);
+		return tmpArray;
+	}
+	
+	public String[] getArrayDeskId(ArrayList<Desk> data) {
+		ArrayList<String> tmp = new ArrayList<String>();
+		if(data != null && data.isEmpty() == false) {
+			for(int i = 0; i < data.size() ; i++ ) {
+				tmp.add(data.get(i).getID());
+			}
+		}
+		String [] tmpArray = tmp.toArray(new String[tmp.size()]);
+		return tmpArray;
+	}
+	
+	public String[] getArrayFilingId(ArrayList<Filing> data) {
+		ArrayList<String> tmp = new ArrayList<String>();
+		if(data != null && data.isEmpty() == false) {
+			for(int i = 0; i < data.size() ; i++ ) {
+				tmp.add(data.get(i).getID());
+			}
+		}
+		String [] tmpArray = tmp.toArray(new String[tmp.size()]);
+		return tmpArray;
+	}
+	
+	public String[] getArrayLampId(ArrayList<Lamp> data) {
+		ArrayList<String> tmp = new ArrayList<String>();
+		if(data != null && data.isEmpty() == false) {
+			for(int i = 0; i < data.size() ; i++ ) {
+				tmp.add(data.get(i).getID());
 			}
 		}
 		String [] tmpArray = tmp.toArray(new String[tmp.size()]);
