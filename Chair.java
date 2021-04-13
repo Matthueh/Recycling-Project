@@ -94,7 +94,7 @@ public class Chair {
 			this.arms = true;
 		}
 		else {
-			this.legs = false;
+			this.arms = false;
 		}
 	}
 	/**
@@ -191,7 +191,7 @@ public class Chair {
 	 * This is a getter function for ID.
 	 * @return Id of the chair we want.
 	 */
-	public String getId() {
+	public String getID() {
 		return this.ID;
 	}
 	/**
