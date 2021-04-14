@@ -906,7 +906,310 @@ public class ObjectCreationTest {
 		assertTrue("Constructor for Manufacturer does not handle creating the Manufacturer properly. phone is not correct.", manu.getPhone().equals(phone));
 		assertTrue("Constructor for Manufacturer does not handle creating the Manufacturer properly. Nunavut is not correct.", manu.getProvince().equals(province));
 	}
+	
 
+	@Test
+	/**
+	 * 	This method will test sort method on the chair type task and must give the cheapest output combination.
+	 */
+	public void testSortChairTypeTask() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		//Expected output
+		String [] Task ={
+			"C0914",
+			"C3405",
+			"150"
+		};
+		
+		ArrayList<Chair> chair = data.getChairs("Task");
+
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		
+		assertTrue("This has not preformed sort correctly for type Task from chair.", Arrays.equals(Task, sort.sort("chair", 1)));	
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the chair type Mesh and must give the cheapest output combination.
+	 */
+	public void testSortChairTypeMesh() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		//Expected output
+		String [] Mesh ={
+			"C0942",
+			"C9890",
+			"150"
+		};
+		
+		ArrayList<Chair> chair = data.getChairs("Mesh");
+
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		
+		assertTrue("This has not preformed sort correctly for type Mesh from chair.", Arrays.equals(Mesh, sort.sort("chair", 1)));	
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the chair type Kneeling and must give the cheapest output combination.
+	 */
+	public void testSortChairTypeKneeling() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		//Expected output
+		String [] Kneeling ={
+			"impossible"
+		};
+		
+		ArrayList<Chair> chair = data.getChairs("Kneeling");
+
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		
+		assertTrue("This has not preformed sort correctly for type Kneeling from chair.", Arrays.equals(Kneeling, sort.sort("chair", 1)));	
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the chair type Executive and must give the cheapest output combination.
+	 */
+	public void testSortChairTypeExecutive() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		//Expected output
+		String [] Executive ={
+			"C2483",
+			"C5784",
+			"C7268",
+			"400"
+		};
+		
+		ArrayList<Chair> chair = data.getChairs("Executive");
+
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		
+		assertTrue("This has not preformed sort correctly for type Executive from chair.", Arrays.equals(Executive, sort.sort("chair", 1)));	
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the chair type Ergonomic and must give the cheapest output combination.
+	 */
+	public void testSortChairTypeErgonomic() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		//Expected output
+		String [] Ergonomic ={
+			"C4839",
+			"C5409",
+			"250"
+		};
+		
+		ArrayList<Chair> chair = data.getChairs("Ergonomic");
+
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		
+		assertTrue("This has not preformed sort correctly for type Ergonomic from chair.", Arrays.equals(Ergonomic, sort.sort("chair", 1)));
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the desk type Traditional and must give the cheapest output combination.
+	 */
+	public void testSortDeskTypeTraditional() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		//Expected output
+		String [] Traditional = {
+			"D4231",
+			"D8675",
+			"D9352",
+			"200"
+		};
+		ArrayList<Desk> desk = data.getDesks("Traditional");
+		
+		Sort sort = new Sort();
+		sort.powerSetDesk(desk);
+		
+		assertTrue("This has not preformed sort correctly for type Traditional from desk.", Arrays.equals(Traditional, sort.sort("desk", 2)));
+		
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the desk type Adjustable and must give the cheapest output combination.
+	 */
+	public void testSortDeskTypeAdjustable() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		//Expected output
+		String [] Adjustable = {
+			"D1030",
+			"D3682",
+			"D5437",
+			"250"
+		};
+		ArrayList<Desk> desk = data.getDesks("Adjustable");
+		
+		Sort sort = new Sort();
+		sort.powerSetDesk(desk);
+		
+		assertTrue("This has not preformed sort correctly for type Adjustable from desk.", Arrays.equals(Adjustable, sort.sort("desk", 1)));
+		
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the desk type Standing and must give the cheapest output combination.
+	 */
+	public void testSortDeskTypeStanding() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		String [] Standing = {
+			"D1927",
+			"D2341",
+			"300"
+		};
+		ArrayList<Desk> desk = data.getDesks("Standing");
+		Sort sort = new Sort();
+
+		sort.powerSetDesk(desk);
+		
+		assertTrue("This has not preformed sort correctly for type Standing from desk.", Arrays.equals(Standing, sort.sort("desk", 1)));
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the filing type Small and must give the cheapest output combination.
+	 */
+	public void testSortFilingTypeSmall() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		
+		String [] Small = {
+			"F001",
+			"F004",
+			"F005",
+			"F006",
+			"F013",
+			"300"
+		};
+		ArrayList<Filing> filing = data.getFilings("Small");
+		
+		Sort sort = new Sort();
+		sort.powerSetFiling(filing);
+		
+		assertTrue("This has not preformed sort correctly for type Small from filing.", Arrays.equals(Small, sort.sort("filing", 3)));		
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the filing type Medium and must give the cheapest output combination.
+	 */
+	public void testSortFilingTypeMedium() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		
+		String [] Medium = {
+			"F007",
+			"F008",
+			"200"
+		};
+		ArrayList<Filing> filing = data.getFilings("Medium");
+		
+		Sort sort = new Sort();
+		sort.powerSetFiling(filing);
+		
+		System.out.println(sort.sort("filing", 1)[0]);
+		
+		assertTrue("This has not preformed sort correctly for type Medium from filing.", Arrays.equals(Medium, sort.sort("filing", 1)));		
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on the filing type Large and must give the cheapest output combination.
+	 */
+	public void testSortFilingTypeLarge() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		
+		String [] Large = {
+			"F010",
+			"F012",
+			"300"
+		};
+		ArrayList<Filing> filing = data.getFilings("Large");
+		
+		Sort sort = new Sort();
+		sort.powerSetFiling(filing);
+		
+		assertTrue("This has not preformed sort correctly for type Large from filing.", Arrays.equals(Large, sort.sort("filing", 1)));		
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on Lamp type desk and must give the cheapest output combination.
+	 */
+	public void testSortLampTypeDesk() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		
+		String [] Desk = {
+			"L013",
+			"L208",
+			"20"
+		};
+		ArrayList<Lamp> lamps = data.getLamps("Desk");
+		
+		Sort sort = new Sort();
+		sort.powerSetLamp(lamps);
+		assertTrue("This has not preformed sort correctly for type Desk.", Arrays.equals(Desk, sort.sort("lamp", 1)));
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on Lamp type Swing Arm and must give the cheapest output combination.
+	 */
+	public void testSortLampTypeSwingArm() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		
+		String [] Desk = {
+			"L053",
+			"L096",
+			"30"
+		};
+		ArrayList<Lamp> lamps = data.getLamps("Swing Arm");
+		
+		Sort sort = new Sort();
+		sort.powerSetLamp(lamps);
+		assertTrue("This has not preformed sort correctly for type Desk.", Arrays.equals(Desk, sort.sort("lamp", 1)));
+	}
+	
+	@Test
+	/**
+	 * This method will test sort method on Lamp type Study and must give the cheapest output combination.
+	 */
+	public void testSortLampTypeStudy() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		
+		String [] Study = {
+			"L928",
+			"10"
+		};
+		ArrayList<Lamp> lamps = data.getLamps("Study");
+		
+		Sort sort = new Sort();
+		sort.powerSetLamp(lamps);
+		assertTrue("This has not preformed sort correctly for type Study.", Arrays.equals(Study, sort.sort("lamp", 1)));
+	}
+	
 	//These are helper methods
 	
 	/**
