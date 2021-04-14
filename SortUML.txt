@@ -1,0 +1,43 @@
+Member Variables
+-powerSetChairs: Chair[][]
+-buildableChair: Chair[][]
+-finalChairs: Chair[]
+-powerSetDesks: Desk[][]
+-buildableDesk: Desk[][]
+-finalDesks: Desk[]
+-powerSetFilings: Filing[][]
+-buildableFiling: Filing[][]
+-finalFilings: Filing[]
+-powerSetLamps: Lamp[][]
+-buildableLamp: Lamp[][]
+-finalLamps: Lamp[]
+Member Functions
++buildCheckChair(int row, int parts): boolean
++buildCheckDesk(int row, int parts): boolean
++buildCheckFiling(int row, int parts): boolean
++buildCheckLamp(int row, int parts): boolean
++checkPriceChair(int index)
++checkPriceDesk(int index)
++checkPriceFiling(int index)
++checkPriceLamp(int index)
++getOrderChair(Chair[] order): int
++getOrderDesk(Desk[] order): int
++getOrderFiling(Filing[] Filing): int
++getOrderLamp(Lamp[] Lamp): int
++powerSetChair(ArrayList<Chair> list)
++powerSetDesk(ArrayList<Desk> list)
++powerSetFiling(ArrayList<Filing> list)
++powerSetLamp(ArrayList<Lamp> list)
++sort(String furniture, int parts)
++getPowerSetChairs(): Chair[][]
++getBuildableChairs(): Chair[][]
++getFinalChairs(): Chair[]
++getPowerSetDesks(): Desk[][]
++getBuildableDesks(): Desk[][]
++getFinalDesks(): Desk[]
++getPowerSetFiling(): Filing[][]
++getBuildableFilings(): Filing[][]
++getFinalFiling(): Filing[]
++getPowerSetLamp(): Lamp[][]
++getBuildableLamps(): Lamp[][]
++getFinalLamps(): []
