@@ -121,6 +121,10 @@ public class Sort {
 					buildableLength++;
 				}
 			}
+			if(buildableLength == 0) {
+				String[] error = {"impossible"};
+				return error;
+			}
 			buildableChair = new Chair[buildableLength][];
 			index = 0;
 			for(int row = 0; row < powerSetChairs.length; row++) {
@@ -134,10 +138,11 @@ public class Sort {
 			for(index = 0; index < buildableChair[index].length; index++) {
 				checkPriceChair(index);
 			}
-			String[] chairIDs = new String[finalChairs.length];
-			for(int i = 0; i < finalChairs.length; i++) {
+			String[] chairIDs = new String[finalChairs.length + 1];
+			for(int i = 0; i < finalChairs.length - 1; i++) {
 				chairIDs[i] = finalChairs[i].getId();
 			}
+			chairIDs[chairIDs.length - 1] = Integer.toString(getOrderPriceChair(finalChairs));
 			return chairIDs;
 		}
 		if(furniture.equals("Desk")) {
@@ -147,6 +152,10 @@ public class Sort {
 				if(buildCheckDesk(row, parts)) {
 					buildableLength++;
 				}
+			}
+			if(buildableLength == 0) {
+				String[] error = {"impossible"};
+				return error;
 			}
 			buildableDesk = new Desk[buildableLength][];
 			index = 0;
@@ -165,6 +174,7 @@ public class Sort {
 			for(int i = 0; i < finalDesks.length; i++) {
 				deskIDs[i] = finalDesks[i].getID();
 			}
+			deskIDs[deskIDs.length - 1] = Integer.toString(getOrderPriceDesk(finalDesks));
 			return deskIDs;
 		}
 		if(furniture.equals("Lamp")) {
@@ -174,6 +184,10 @@ public class Sort {
 				if(buildCheckLamp(row, parts)) {
 					buildableLength++;
 				}
+			}
+			if(buildableLength == 0) {
+				String[] error = {"impossible"};
+				return error;
 			}
 			buildableLamp = new Lamp[buildableLength][];
 			index = 0;
@@ -192,6 +206,7 @@ public class Sort {
 			for(int i = 0; i < finalLamps.length; i++) {
 				lampIDs[i] = finalLamps[i].getID();
 			}
+			lampIDs[lampIDs.length - 1] = Integer.toString(getOrderPriceLamp(finalLamps));
 			return lampIDs;
 		}
 		if(furniture.equals("Filing")) {
@@ -201,6 +216,10 @@ public class Sort {
 				if(buildCheckFiling(row, parts)) {
 					buildableLength++;
 				}
+			}
+			if(buildableLength == 0) {
+				String[] error = {"impossible"};
+				return error;
 			}
 			buildableFiling = new Filing[buildableLength][];
 			index = 0;
@@ -219,6 +238,7 @@ public class Sort {
 			for(int i = 0; i < finalFilings.length; i++) {
 				filingIDs[i] = finalFilings[i].getID();
 			}
+			filingIDs[filingIDs.length - 1] = Integer.toString(getOrderPriceFiling(finalFilings));
 			return filingIDs;
 		}
 		String[] error = {"error"};
