@@ -967,7 +967,7 @@ public class ObjectCreationTest {
 	@Rule public ExpectedException exceptionRule = ExpectedException.none();
 	@Test
 	/**
-	 * This method will handle exception handling for sort.
+	 * This method will handle exception handling for sort chair type task.
 	 */
 	public void testSortChairTypeTaskException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1006,7 +1006,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * This method will handle exception handling for sort.
+	 * This method will handle exception handling for sort chair type mesh.
 	 */
 	public void testSortChairTypeMeshException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1080,7 +1080,7 @@ public class ObjectCreationTest {
 	}
 	@Test
 	/**
-	 * 
+	 * 	This method will handle exception for sort chair type kneeling.
 	 */
 	public void testSortChairTypeKneelingException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1137,7 +1137,7 @@ public class ObjectCreationTest {
 	}
 	@Test
 	/**
-	 * 
+	 * This method will test whether the sort method will throw an illegal argument exception when chair with type executive is passed.
 	 */
 	public void testSortChairTypeExecutiveException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1193,7 +1193,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * 
+	 * This method will test whether the sort method will throw and Illegal argument exception when chair type ergonomic is passed.
 	 */
 	public void testSortChairTypeErgonomicException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1253,7 +1253,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * 
+	 * This method will test the sort methods illegal argument exception for desk type traditional.
 	 */
 	public void testSortDeskTypeTraditionalException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1317,7 +1317,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * 
+	 *  This method will test desk illegal argument exception type adjustable.
 	 */
 	public void testSortDeskTypeAdjustableException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1370,7 +1370,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * 
+	 * This will test desk type standing for illegal argument exception in sort.
 	 */
 	public void testSortDeskTypeStandingException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1430,7 +1430,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * 
+	 *  This will test illegal argument exception for filing type small for sort.
 	 */
 	public void testSortFilingTypeSmallException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1490,7 +1490,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * 
+	 * This will test illegal argument exception for filing type Medium in sort.
 	 */
 	public void testSortFilingTypeMediumException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1524,6 +1524,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
+	 * This method will test sort method on the filing type Large and must give the cheapest output combination for multiple filings.
 	 */
 	public void testSortFilingTypeLargeMulti() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1542,7 +1543,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * 
+	 * This method will test sort method on filing type large and throw an illegal argument exception.
 	 */
 	public void testSortFilingTypeLargeException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1597,7 +1598,7 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
-	 * 
+	 * This method will test exception handling for Lamp type desk for illegal argument exception handling.
 	 */
 	public void testSortLampTypeDeskException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1648,7 +1649,7 @@ public class ObjectCreationTest {
 	}
 	@Test
 	/**
-	 * 
+	 * This method will test exception handling for Lamp type swing arm for illegal argument exception handling.
 	 */
 	public void testSortLampTypeSwingArmException() {
 		Database data = new Database(DBURL, Username, Password);
@@ -1681,7 +1682,7 @@ public class ObjectCreationTest {
 	}
 	@Test
 	/**
-	 * 
+	 * This method will test exception handling for Lamp type Study for illegal argument exception handling.
 	 */
 	public void testSortLampTypeStudyException() {
 		Database data = new Database(DBURL, Username, Password);
