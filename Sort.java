@@ -49,7 +49,7 @@ public class Sort {
 					powerSetChairs[i][index] = list.get(index);
 				}
 			}
-		}//uses bit maps to create each combination from the set of funiture items
+		}//uses bit maps to create each combination from the set of furniture items
 	}
 	/**
 	 * generates all combinations of the desk list and 
@@ -60,7 +60,7 @@ public class Sort {
 		int length = 2;
 		for(int i = 1; i < list.size(); i++) {
 			 length *= 2;
-		}
+		}//finds the number of possible combinations
 		powerSetDesks = new Desk[length][list.size()];
 		for(int i = 0; i < length; i++) {
 			for(int index = 0; index < list.size(); index++) {
@@ -69,7 +69,7 @@ public class Sort {
 				}
 			}
 		}
-	}
+	}//uses bit maps to create each combination from the set of furniture items
 	/**
 	 * generates all combinations of the filing cabinet list and 
 	 * stores the combinations in the local variable powerSetFilings
@@ -79,7 +79,7 @@ public class Sort {
 		int length = 2;
 		for(int i = 1; i < list.size(); i++) {
 			 length *= 2;
-		}
+		}//finds the number of possible combinations
 		powerSetFilings = new Filing[length][list.size()];
 		for(int i = 0; i < length; i++) {
 			for(int index = 0; index < list.size(); index++) {
@@ -88,7 +88,7 @@ public class Sort {
 				}
 			}
 		}
-	}
+	}//uses bit maps to create each combination from the set of furniture items
 	/**
 	 * generates all combinations of the lamp list and 
 	 * stores the combinations in the local variable powerSetLamps
@@ -98,7 +98,7 @@ public class Sort {
 		int length = 2;
 		for(int i = 1; i < list.size(); i++) {
 			 length *= 2;
-		}
+		}//finds the number of possible combinations
 		powerSetLamps = new Lamp[length][list.size()];
 		for(int i = 0; i < length; i++) {
 			for(int index = 0; index < list.size(); index++) {
@@ -107,7 +107,7 @@ public class Sort {
 				}
 			}
 		}
-	}
+	}//uses bit maps to create each combination from the set of furniture items
 	//sort must be called after powerset to find the cheapest combination of items for a complete order
 	/**
 	 * Finds the cheapest combination of the specified furniture for a requested order.
@@ -155,22 +155,22 @@ public class Sort {
 					chairIDs[counter] = finalChairs[i].getId();
 					counter++;
 				}
-			}//adds the ids to the array to be returned
+			}//adds the ID's to the array to be returned
 			chairIDs[chairIDs.length - 1] = Integer.toString(getOrderPriceChair(finalChairs));//adds the total price to the last element of the array
 			return chairIDs;
 		}
-		if(furniture.equals("desk")) {
+		if(furniture.equals("desk")) {//these if statements determine which set of functions to use
 			int buildableLength = 0;
 			int index = 0;
 			for(int row = 0; row < powerSetDesks.length; row++) {
 				if(buildCheckDesk(row, parts)) {
 					buildableLength++;
 				}
-			}
+			}//checks for the amount of sets that will fulfill the order
 			if(buildableLength == 0) {
 				String[] error = {"impossible"};
 				return error;
-			}
+			}//if there are no usable sets then the function returns an error
 			buildableDesk = new Desk[buildableLength][powerSetDesks[0].length];
 			index = 0;
 			for(int row = 0; row < powerSetDesks.length; row++) {
@@ -180,16 +180,16 @@ public class Sort {
 					}
 					index++;
 				}
-			}
+			}//checks for each set that can complete an order
 			for(index = 0; index < buildableDesk.length; index++) {
 				checkPriceDesk(index);
-			}
+			}//finds the cheapest set for the order
 			int counter = 0;
 			for(int i = 0; i < finalDesks.length; i++) {
 				if(finalDesks[i] != null) {
 					counter++;
 				}
-			}
+			}//gets the length of the array to return
 			String[] deskIDs = new String[counter + 1];
 			counter = 0;
 			for(int i = 0; i < finalDesks.length; i++) {
@@ -197,22 +197,22 @@ public class Sort {
 					deskIDs[counter] = finalDesks[i].getID();
 					counter++;
 				}
-			}
+			}//adds the ID's to the array to be returned
 			deskIDs[deskIDs.length - 1] = Integer.toString(getOrderPriceDesk(finalDesks));
 			return deskIDs;
 		}
-		if(furniture.equals("lamp")) {
+		if(furniture.equals("lamp")) {//these if statements determine which set of functions to use
 			int buildableLength = 0;
 			int index = 0;
 			for(int row = 0; row < powerSetLamps.length; row++) {
 				if(buildCheckLamp(row, parts)) {
 					buildableLength++;
 				}
-			}
+			}//checks for the amount of sets that will fulfill the order
 			if(buildableLength == 0) {
 				String[] error = {"impossible"};
 				return error;
-			}
+			}//if there are no usable sets then the function returns an error
 			buildableLamp = new Lamp[buildableLength][powerSetLamps[0].length];
 			index = 0;
 			for(int row = 0; row < powerSetLamps.length; row++) {
@@ -222,16 +222,16 @@ public class Sort {
 					}
 					index++;
 				}
-			}
+			}//checks for each set that can complete an order
 			for(index = 0; index < buildableLamp.length; index++) {
 				checkPriceLamp(index);
-			}
+			}//finds the cheapest set for the order
 			int counter = 0;
 			for(int i = 0; i < finalLamps.length; i++) {
 				if(finalLamps[i] != null) {
 					counter++;
 				}
-			}
+			}//gets the length of the array to return
 			String[] lampIDs = new String[counter + 1];
 			counter = 0;
 			for(int i = 0; i < finalLamps.length; i++) {
@@ -239,22 +239,22 @@ public class Sort {
 					lampIDs[counter] = finalLamps[i].getID();
 					counter++;
 				}
-			}
+			}//adds the ID's to the array to be returned
 			lampIDs[lampIDs.length - 1] = Integer.toString(getOrderPriceLamp(finalLamps));
 			return lampIDs;
 		}
-		if(furniture.equals("filing")) {
+		if(furniture.equals("filing")) {//these if statements determine which set of functions to use
 			int buildableLength = 0;
 			int index = 0;
 			for(int row = 0; row < powerSetFilings.length; row++) {
 				if(buildCheckFiling(row, parts)) {
 					buildableLength++;
 				}
-			}
+			}//checks for the amount of sets that will fulfill the order
 			if(buildableLength == 0) {
 				String[] error = {"impossible"};
 				return error;
-			}
+			}//if there are no usable sets then the function returns an error
 			buildableFiling = new Filing[buildableLength][powerSetFilings[0].length];
 			index = 0;
 			for(int row = 0; row < powerSetFilings.length; row++) {
@@ -264,16 +264,16 @@ public class Sort {
 					}
 					index++;
 				}
-			}
+			}//checks for each set that can complete an order
 			for(index = 0; index < buildableFiling.length; index++) {
 				checkPriceFiling(index);
-			}
+			}//finds the cheapest set for the order
 			int counter = 0;
 			for(int i = 0; i < finalFilings.length; i++) {
 				if(finalFilings[i] != null) {
 					counter++;
 				}
-			}
+			}//gets the length of the array to return
 			String[] filingIDs = new String[counter + 1];
 			counter = 0;
 			for(int i = 0; i < finalFilings.length; i++) {
@@ -281,7 +281,7 @@ public class Sort {
 					filingIDs[counter] = finalFilings[i].getID();
 					counter++;
 				}
-			}
+			}//adds the ID's to the array to be returned
 			filingIDs[filingIDs.length - 1] = Integer.toString(getOrderPriceFiling(finalFilings));
 			return filingIDs;
 		}
@@ -346,10 +346,10 @@ public class Sort {
 					drawer++;
 				}
 			}
-		}
+		}//checks what usable parts each item of furniture contains
 		if(legs >= parts && top >= parts && drawer >= parts) {
 			return true;
-		}
+		}//checks if the order can be fulfilled from the set of items
 		else {
 			return false;
 		}
@@ -373,10 +373,10 @@ public class Sort {
 					bulb++;
 				}
 			}
-		}
+		}//checks what usable parts each item of furniture contains
 		if(base >= parts && bulb >= parts) {
 			return true;
-		}
+		}//checks if the order can be fulfilled from the set of items
 		else {
 			return false;
 		}
@@ -404,10 +404,10 @@ public class Sort {
 					cabinet++;
 				}
 			}
-		}
+		}//checks what usable parts each item of furniture contains
 		if(rails >= parts && drawers >= parts && cabinet >= parts) {
 			return true;
-		}
+		}//checks if the order can be fulfilled from the set of items
 		else {
 			return false;
 		}
@@ -449,13 +449,13 @@ public class Sort {
 			}
 			return;
 		}
-		
+		//if finalChairs does not have a current lowest cost set, then the first element of buildableChair is put into finalChairs
 		if(getOrderPriceFiling(finalFilings) > getOrderPriceFiling(buildableFiling[index])) {
 			for(int column = 0; column < buildableFiling[index].length; column++) {
 				finalFilings[column] = buildableFiling[index][column];
 			}
 		}
-	}
+	}//checks whether the price of the given set is lower than the previous lowest set of items
 	/**
 	 * compares the prices of the current lowest costing combinations of desks 
 	 * with the current combination at index of the buildableDesk member variable.
@@ -471,13 +471,13 @@ public class Sort {
 			}
 			return;
 		}
-		
+		//if finalChairs does not have a current lowest cost set, then the first element of buildableChair is put into finalChairs
 		if(getOrderPriceDesk(finalDesks) > getOrderPriceDesk(buildableDesk[index])) {
 			for(int column = 0; column < buildableDesk[index].length; column++) {
 				finalDesks[column] = buildableDesk[index][column];
 			}
 		}
-	}
+	}//checks whether the price of the given set is lower than the previous lowest set of items
 	/**
 	 * compares the prices of the current lowest costing combinations of lamps 
 	 * with the current combination at index of the buildableLamp member variable.
@@ -493,13 +493,13 @@ public class Sort {
 			}
 			return;
 		}
-		
+		//if finalChairs does not have a current lowest cost set, then the first element of buildableChair is put into finalChairs
 		if(getOrderPriceLamp(finalLamps) > getOrderPriceLamp(buildableLamp[index])) {
 			for(int column = 0; column < buildableLamp[index].length; column++) {
 				finalLamps[column] = buildableLamp[index][column];
 			}
 		}
-	}
+	}//checks whether the price of the given set is lower than the previous lowest set of items
 	/**
 	 * Finds the price of the combination of chairs
 	 * @param 	order	an array of Chair objects to be scanned for price
@@ -525,7 +525,7 @@ public class Sort {
 			if(order[index] != null) {
 				price += order[index].getPrice();
 			}
-		}
+		}//finds the total price of the set of items
 		return price;
 	}
 	/**
@@ -539,7 +539,7 @@ public class Sort {
 			if(order[index] != null) {
 				price += order[index].getPrice();
 			}
-		}
+		}//finds the total price of the set of items
 		return price;
 	}
 	/**
@@ -553,7 +553,7 @@ public class Sort {
 			if(order[index] != null) {
 				price += order[index].getPrice();
 			}
-		}
+		}//finds the total price of the set of items
 		return price;
 	}
   
