@@ -117,176 +117,181 @@ public class Sort {
 	 * @param parts		number of items of furniture requested
 	 */
 	public String[] sort(String furniture, int parts) {
-		if(furniture.equals("chair")) {//these if statements determine which set of functions to use
-			int buildableLength = 0;
-			int index = 0;
-			for(int row = 0; row < powerSetChairs.length; row++) {
-				if(buildCheckChair(row, parts)) {
-					buildableLength++;
-				}
-			}//checks for the amount of sets that will fulfill the order
-			if(buildableLength == 0) {
-				String[] error = {"impossible"};
-				return error;
-			}//if there are no usable sets then the function returns an error
-			buildableChair = new Chair[buildableLength][powerSetChairs[0].length];
-			index = 0;
-			for(int row = 0; row < powerSetChairs.length; row++) {
-				if(buildCheckChair(row, parts)) {
-					for(int column = 0; column < buildableChair[index].length; column++) {
-						buildableChair[index][column] = powerSetChairs[row][column];
+		try {
+			if(furniture.equals("chair")) {//these if statements determine which set of functions to use
+				int buildableLength = 0;
+				int index = 0;
+				for(int row = 0; row < powerSetChairs.length; row++) {
+					if(buildCheckChair(row, parts)) {
+						buildableLength++;
 					}
-					index++;
-				}
-			}//checks for each set that can complete an order
-			for(index = 0; index < buildableChair.length; index++) {
-				checkPriceChair(index);
-			}//finds the cheapest set for the order
-			int counter = 0;
-			for(int i = 0; i < finalChairs.length; i++) {
-				if(finalChairs[i] != null) {
-					counter++;
-				}
-			}//gets the length of the array to return
-			String[] chairIDs = new String[counter + 1];
-			counter = 0;
-			for(int i = 0; i < finalChairs.length; i++) {
-				if(finalChairs[i] != null) {
-					chairIDs[counter] = finalChairs[i].getId();
-					counter++;
-				}
-			}//adds the ID's to the array to be returned
-			chairIDs[chairIDs.length - 1] = Integer.toString(getOrderPriceChair(finalChairs));//adds the total price to the last element of the array
-			return chairIDs;
-		}
-		if(furniture.equals("desk")) {//these if statements determine which set of functions to use
-			int buildableLength = 0;
-			int index = 0;
-			for(int row = 0; row < powerSetDesks.length; row++) {
-				if(buildCheckDesk(row, parts)) {
-					buildableLength++;
-				}
-			}//checks for the amount of sets that will fulfill the order
-			if(buildableLength == 0) {
-				String[] error = {"impossible"};
-				return error;
-			}//if there are no usable sets then the function returns an error
-			buildableDesk = new Desk[buildableLength][powerSetDesks[0].length];
-			index = 0;
-			for(int row = 0; row < powerSetDesks.length; row++) {
-				if(buildCheckDesk(row, parts)) {
-					for(int column = 0; column < buildableDesk[index].length; column++) {
-						buildableDesk[index][column] = powerSetDesks[row][column];
+				}//checks for the amount of sets that will fulfill the order
+				if(buildableLength == 0) {
+					String[] error = {"impossible"};
+					return error;
+				}//if there are no usable sets then the function returns an error
+				buildableChair = new Chair[buildableLength][powerSetChairs[0].length];
+				index = 0;
+				for(int row = 0; row < powerSetChairs.length; row++) {
+					if(buildCheckChair(row, parts)) {
+						for(int column = 0; column < buildableChair[index].length; column++) {
+							buildableChair[index][column] = powerSetChairs[row][column];
+						}
+						index++;
 					}
-					index++;
-				}
-			}//checks for each set that can complete an order
-			for(index = 0; index < buildableDesk.length; index++) {
-				checkPriceDesk(index);
-			}//finds the cheapest set for the order
-			int counter = 0;
-			for(int i = 0; i < finalDesks.length; i++) {
-				if(finalDesks[i] != null) {
-					counter++;
-				}
-			}//gets the length of the array to return
-			String[] deskIDs = new String[counter + 1];
-			counter = 0;
-			for(int i = 0; i < finalDesks.length; i++) {
-				if(finalDesks[i] != null) {
-					deskIDs[counter] = finalDesks[i].getID();
-					counter++;
-				}
-			}//adds the ID's to the array to be returned
-			deskIDs[deskIDs.length - 1] = Integer.toString(getOrderPriceDesk(finalDesks));
-			return deskIDs;
-		}
-		if(furniture.equals("lamp")) {//these if statements determine which set of functions to use
-			int buildableLength = 0;
-			int index = 0;
-			for(int row = 0; row < powerSetLamps.length; row++) {
-				if(buildCheckLamp(row, parts)) {
-					buildableLength++;
-				}
-			}//checks for the amount of sets that will fulfill the order
-			if(buildableLength == 0) {
-				String[] error = {"impossible"};
-				return error;
-			}//if there are no usable sets then the function returns an error
-			buildableLamp = new Lamp[buildableLength][powerSetLamps[0].length];
-			index = 0;
-			for(int row = 0; row < powerSetLamps.length; row++) {
-				if(buildCheckLamp(row, parts)) {
-					for(int column = 0; column < buildableLamp[index].length; column++) {
-						buildableLamp[index][column] = powerSetLamps[row][column];
+				}//checks for each set that can complete an order
+				for(index = 0; index < buildableChair.length; index++) {
+					checkPriceChair(index);
+				}//finds the cheapest set for the order
+				int counter = 0;
+				for(int i = 0; i < finalChairs.length; i++) {
+					if(finalChairs[i] != null) {
+						counter++;
 					}
-					index++;
-				}
-			}//checks for each set that can complete an order
-			for(index = 0; index < buildableLamp.length; index++) {
-				checkPriceLamp(index);
-			}//finds the cheapest set for the order
-			int counter = 0;
-			for(int i = 0; i < finalLamps.length; i++) {
-				if(finalLamps[i] != null) {
-					counter++;
-				}
-			}//gets the length of the array to return
-			String[] lampIDs = new String[counter + 1];
-			counter = 0;
-			for(int i = 0; i < finalLamps.length; i++) {
-				if(finalLamps[i] != null) {
-					lampIDs[counter] = finalLamps[i].getID();
-					counter++;
-				}
-			}//adds the ID's to the array to be returned
-			lampIDs[lampIDs.length - 1] = Integer.toString(getOrderPriceLamp(finalLamps));
-			return lampIDs;
-		}
-		if(furniture.equals("filing")) {//these if statements determine which set of functions to use
-			int buildableLength = 0;
-			int index = 0;
-			for(int row = 0; row < powerSetFilings.length; row++) {
-				if(buildCheckFiling(row, parts)) {
-					buildableLength++;
-				}
-			}//checks for the amount of sets that will fulfill the order
-			if(buildableLength == 0) {
-				String[] error = {"impossible"};
-				return error;
-			}//if there are no usable sets then the function returns an error
-			buildableFiling = new Filing[buildableLength][powerSetFilings[0].length];
-			index = 0;
-			for(int row = 0; row < powerSetFilings.length; row++) {
-				if(buildCheckFiling(row, parts)) {
-					for(int column = 0; column < buildableFiling[index].length; column++) {
-						buildableFiling[index][column] = powerSetFilings[row][column];
+				}//gets the length of the array to return
+				String[] chairIDs = new String[counter + 1];
+				counter = 0;
+				for(int i = 0; i < finalChairs.length; i++) {
+					if(finalChairs[i] != null) {
+						chairIDs[counter] = finalChairs[i].getId();
+						counter++;
 					}
-					index++;
-				}
-			}//checks for each set that can complete an order
-			for(index = 0; index < buildableFiling.length; index++) {
-				checkPriceFiling(index);
-			}//finds the cheapest set for the order
-			int counter = 0;
-			for(int i = 0; i < finalFilings.length; i++) {
-				if(finalFilings[i] != null) {
-					counter++;
-				}
-			}//gets the length of the array to return
-			String[] filingIDs = new String[counter + 1];
-			counter = 0;
-			for(int i = 0; i < finalFilings.length; i++) {
-				if(finalFilings[i] != null) {
-					filingIDs[counter] = finalFilings[i].getID();
-					counter++;
-				}
-			}//adds the ID's to the array to be returned
-			filingIDs[filingIDs.length - 1] = Integer.toString(getOrderPriceFiling(finalFilings));
-			return filingIDs;
+				}//adds the ID's to the array to be returned
+				chairIDs[chairIDs.length - 1] = Integer.toString(getOrderPriceChair(finalChairs));//adds the total price to the last element of the array
+				return chairIDs;
+			}
+			if(furniture.equals("desk")) {//these if statements determine which set of functions to use
+				int buildableLength = 0;
+				int index = 0;
+				for(int row = 0; row < powerSetDesks.length; row++) {
+					if(buildCheckDesk(row, parts)) {
+						buildableLength++;
+					}
+				}//checks for the amount of sets that will fulfill the order
+				if(buildableLength == 0) {
+					String[] error = {"impossible"};
+					return error;
+				}//if there are no usable sets then the function returns an error
+				buildableDesk = new Desk[buildableLength][powerSetDesks[0].length];
+				index = 0;
+				for(int row = 0; row < powerSetDesks.length; row++) {
+					if(buildCheckDesk(row, parts)) {
+						for(int column = 0; column < buildableDesk[index].length; column++) {
+							buildableDesk[index][column] = powerSetDesks[row][column];
+						}
+						index++;
+					}
+				}//checks for each set that can complete an order
+				for(index = 0; index < buildableDesk.length; index++) {
+					checkPriceDesk(index);
+				}//finds the cheapest set for the order
+				int counter = 0;
+				for(int i = 0; i < finalDesks.length; i++) {
+					if(finalDesks[i] != null) {
+						counter++;
+					}
+				}//gets the length of the array to return
+				String[] deskIDs = new String[counter + 1];
+				counter = 0;
+				for(int i = 0; i < finalDesks.length; i++) {
+					if(finalDesks[i] != null) {
+						deskIDs[counter] = finalDesks[i].getID();
+						counter++;
+					}
+				}//adds the ID's to the array to be returned
+				deskIDs[deskIDs.length - 1] = Integer.toString(getOrderPriceDesk(finalDesks));
+				return deskIDs;
+			}
+			if(furniture.equals("lamp")) {//these if statements determine which set of functions to use
+				int buildableLength = 0;
+				int index = 0;
+				for(int row = 0; row < powerSetLamps.length; row++) {
+					if(buildCheckLamp(row, parts)) {
+						buildableLength++;
+					}
+				}//checks for the amount of sets that will fulfill the order
+				if(buildableLength == 0) {
+					String[] error = {"impossible"};
+					return error;
+				}//if there are no usable sets then the function returns an error
+				buildableLamp = new Lamp[buildableLength][powerSetLamps[0].length];
+				index = 0;
+				for(int row = 0; row < powerSetLamps.length; row++) {
+					if(buildCheckLamp(row, parts)) {
+						for(int column = 0; column < buildableLamp[index].length; column++) {
+							buildableLamp[index][column] = powerSetLamps[row][column];
+						}
+						index++;
+					}
+				}//checks for each set that can complete an order
+				for(index = 0; index < buildableLamp.length; index++) {
+					checkPriceLamp(index);
+				}//finds the cheapest set for the order
+				int counter = 0;
+				for(int i = 0; i < finalLamps.length; i++) {
+					if(finalLamps[i] != null) {
+						counter++;
+					}
+				}//gets the length of the array to return
+				String[] lampIDs = new String[counter + 1];
+				counter = 0;
+				for(int i = 0; i < finalLamps.length; i++) {
+					if(finalLamps[i] != null) {
+						lampIDs[counter] = finalLamps[i].getID();
+						counter++;
+					}
+				}//adds the ID's to the array to be returned
+				lampIDs[lampIDs.length - 1] = Integer.toString(getOrderPriceLamp(finalLamps));
+				return lampIDs;
+			}
+			if(furniture.equals("filing")) {//these if statements determine which set of functions to use
+				int buildableLength = 0;
+				int index = 0;
+				for(int row = 0; row < powerSetFilings.length; row++) {
+					if(buildCheckFiling(row, parts)) {
+						buildableLength++;
+					}
+				}//checks for the amount of sets that will fulfill the order
+				if(buildableLength == 0) {
+					String[] error = {"impossible"};
+					return error;
+				}//if there are no usable sets then the function returns an error
+				buildableFiling = new Filing[buildableLength][powerSetFilings[0].length];
+				index = 0;
+				for(int row = 0; row < powerSetFilings.length; row++) {
+					if(buildCheckFiling(row, parts)) {
+						for(int column = 0; column < buildableFiling[index].length; column++) {
+							buildableFiling[index][column] = powerSetFilings[row][column];
+						}
+						index++;
+					}
+				}//checks for each set that can complete an order
+				for(index = 0; index < buildableFiling.length; index++) {
+					checkPriceFiling(index);
+				}//finds the cheapest set for the order
+				int counter = 0;
+				for(int i = 0; i < finalFilings.length; i++) {
+					if(finalFilings[i] != null) {
+						counter++;
+					}
+				}//gets the length of the array to return
+				String[] filingIDs = new String[counter + 1];
+				counter = 0;
+				for(int i = 0; i < finalFilings.length; i++) {
+					if(finalFilings[i] != null) {
+						filingIDs[counter] = finalFilings[i].getID();
+						counter++;
+					}
+				}//adds the ID's to the array to be returned
+				filingIDs[filingIDs.length - 1] = Integer.toString(getOrderPriceFiling(finalFilings));
+				return filingIDs;
+			}
+			String[] error = {"error"};
+			return error;
 		}
-		String[] error = {"error"};
-		return error;
+		catch (IllegalArgumentException e) {
+			throw new IllegalArgumentException();
+		}
 	}
 	/**
 	 * Generates a list of all combinations of chairs that can be used to
