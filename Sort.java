@@ -29,6 +29,9 @@ public class Sort {
 	private Lamp[][] buildableLamp;
 	//holds the cheapest combination of chairs for the order
 	private Lamp[] finalLamps = null;
+	//the four powerset functions are used to generate all combinations of the desired furniture type
+	//these must be called before using the main sort function
+	//each function must be used with its respective object type
 	/**
 	 * generates all combinations of the chair list and 
 	 * stores the combinations in the local variable powerSetChairs
@@ -38,7 +41,7 @@ public class Sort {
 		int length = 2;
 		for(int i = 1; i < list.size(); i++) {
 			 length *= 2;
-		}
+		}//finds the number of possible combinations
 		powerSetChairs = new Chair[length][list.size()];
 		for(int i = 0; i < length; i++) {
 			for(int index = 0; index < list.size(); index++) {
@@ -46,7 +49,7 @@ public class Sort {
 					powerSetChairs[i][index] = list.get(index);
 				}
 			}
-		}
+		}//uses bit maps to create each combination from the set of funiture items
 	}
 	/**
 	 * generates all combinations of the desk list and 
@@ -105,6 +108,7 @@ public class Sort {
 			}
 		}
 	}
+	//sort must be called after powerset to find the cheapest combination of items for a complete order
 	/**
 	 * Finds the cheapest combination of the specified furniture for a requested order.
 	 * First finds all combinations of items that can complete an order then finds the cheapest from
@@ -113,18 +117,18 @@ public class Sort {
 	 * @param parts		number of items of furniture requested
 	 */
 	public String[] sort(String furniture, int parts) {
-		if(furniture.equals("chair")) {
+		if(furniture.equals("chair")) {//these if statements determine which set of functions to use
 			int buildableLength = 0;
 			int index = 0;
 			for(int row = 0; row < powerSetChairs.length; row++) {
 				if(buildCheckChair(row, parts)) {
 					buildableLength++;
 				}
-			}
+			}//checks for the amount of sets that will fulfill the order
 			if(buildableLength == 0) {
 				String[] error = {"impossible"};
 				return error;
-			}
+			}//if there are no usable sets then the function returns an error
 			buildableChair = new Chair[buildableLength][powerSetChairs[0].length];
 			index = 0;
 			for(int row = 0; row < powerSetChairs.length; row++) {
@@ -134,16 +138,16 @@ public class Sort {
 					}
 					index++;
 				}
-			}
-			for(index = 0; index < buildableChair[index].length; index++) {
+			}//checks for each set that can complete an order
+			for(index = 0; index < buildableChair.length; index++) {
 				checkPriceChair(index);
-			}
+			}//finds the cheapest set for the order
 			int counter = 0;
 			for(int i = 0; i < finalChairs.length; i++) {
 				if(finalChairs[i] != null) {
 					counter++;
 				}
-			}
+			}//gets the length of the array to return
 			String[] chairIDs = new String[counter + 1];
 			counter = 0;
 			for(int i = 0; i < finalChairs.length; i++) {
@@ -151,8 +155,8 @@ public class Sort {
 					chairIDs[counter] = finalChairs[i].getId();
 					counter++;
 				}
-			}
-			chairIDs[chairIDs.length - 1] = Integer.toString(getOrderPriceChair(finalChairs));
+			}//adds the ids to the array to be returned
+			chairIDs[chairIDs.length - 1] = Integer.toString(getOrderPriceChair(finalChairs));//adds the total price to the last element of the array
 			return chairIDs;
 		}
 		if(furniture.equals("desk")) {
@@ -177,7 +181,7 @@ public class Sort {
 					index++;
 				}
 			}
-			for(index = 0; index < buildableDesk[index].length; index++) {
+			for(index = 0; index < buildableDesk.length; index++) {
 				checkPriceDesk(index);
 			}
 			int counter = 0;
@@ -216,9 +220,10 @@ public class Sort {
 					for(int column = 0; column < buildableLamp[index].length; column++) {
 						buildableLamp[index][column] = powerSetLamps[row][column];
 					}
+					index++;
 				}
 			}
-			for(index = 0; index < buildableLamp[index].length; index++) {
+			for(index = 0; index < buildableLamp.length; index++) {
 				checkPriceLamp(index);
 			}
 			int counter = 0;
@@ -257,9 +262,10 @@ public class Sort {
 					for(int column = 0; column < buildableFiling[index].length; column++) {
 						buildableFiling[index][column] = powerSetFilings[row][column];
 					}
+					index++;
 				}
 			}
-			for(index = 0; index < buildableFiling[index].length; index++) {
+			for(index = 0; index < buildableFiling.length; index++) {
 				checkPriceFiling(index);
 			}
 			int counter = 0;
@@ -271,7 +277,7 @@ public class Sort {
 			String[] filingIDs = new String[counter + 1];
 			counter = 0;
 			for(int i = 0; i < finalFilings.length; i++) {
-				if(finalLamps[i] != null) {
+				if(finalFilings[i] != null) {
 					filingIDs[counter] = finalFilings[i].getID();
 					counter++;
 				}
@@ -308,15 +314,12 @@ public class Sort {
 				if(powerSetChairs[row][i].getSeat()) {
 					seat++;
 				}
-				System.out.println("powerSetChairs[row][i]: " + powerSetChairs[row][i]);
 			}
-		}
+		}//checks what usable parts each item of furniture contains
 		if(legs >= parts && arms >= parts && cushion >= parts && seat >= parts) {
-			System.out.println("buildCheckChair: true");
 			return true;
-		}
+		}//checks if the order can be fulfilled from the set of items
 		else {
-			System.out.println("buildCheckChair: false");
 			return false;
 		}
 	}
@@ -330,6 +333,7 @@ public class Sort {
 	public boolean buildCheckDesk(int row, int parts) {
 		int legs = 0;
 		int top = 0;
+		int drawer = 0;
 		for(int i = 0; i < powerSetDesks[row].length; i++) {
 			if(powerSetDesks[row][i] != null) {
 				if(powerSetDesks[row][i].getLegs()) {
@@ -338,9 +342,12 @@ public class Sort {
 				if(powerSetDesks[row][i].getTop()) {
 					top++;
 				}
+				if(powerSetDesks[row][i].getDrawer()) {
+					drawer++;
+				}
 			}
 		}
-		if(legs >= parts && top >= parts) {
+		if(legs >= parts && top >= parts && drawer >= parts) {
 			return true;
 		}
 		else {
@@ -357,7 +364,7 @@ public class Sort {
 	public boolean buildCheckLamp(int row, int parts) {
 		int base = 0;
 		int bulb = 0;
-		for(int i = 0; i < powerSetLamps[row].length && powerSetChairs[row][i] != null; i++) {
+		for(int i = 0; i < powerSetLamps[row].length; i++) {
 			if(powerSetLamps[row][i] != null) {
 				if(powerSetLamps[row][i].getBase()) {
 					base++;
@@ -420,13 +427,13 @@ public class Sort {
 			}
 			return;
 		}
-		
+		//if finalChairs does not have a current lowest cost set, then the first element of buildableChair is put into finalChairs
 		if(getOrderPriceChair(finalChairs) > getOrderPriceChair(buildableChair[index])) {
 			for(int column = 0; column < buildableChair[index].length; column++) {
 				finalChairs[column] = buildableChair[index][column];
 			}
 		}
-	}
+	}//checks whether the price of the given set is lower than the previous lowest set of items
 	/**
 	 * compares the prices of the current lowest costing combinations of cabinets 
 	 * with the current combination at index of the buildableFiling member variable.
@@ -438,7 +445,7 @@ public class Sort {
 		if(finalFilings == null) {
 			finalFilings = new Filing[buildableFiling[index].length];
 			for(int i = 0; i < buildableFiling[index].length; i++) {
-				finalFilings = buildableFiling[index];
+				finalFilings[i] = buildableFiling[index][i];
 			}
 			return;
 		}
@@ -504,7 +511,7 @@ public class Sort {
 			if(order[index] != null) {
 				price += order[index].getPrice();
 			}
-		}
+		}//finds the total price of the set of items
 		return price;
 	}
 	/**
@@ -549,4 +556,102 @@ public class Sort {
 		}
 		return price;
 	}
+  
+  
+  
+  
+  //getter methods
+  
+	/**
+	 * getter for powerSetChairs
+	 * @return	member variable powerSetChairs
+	 */
+  	public Chair [][] getPowerSetChairs() {
+		return this.powerSetChairs;
+	}
+  	/**
+	 * getter for buildableChairs
+	 * @return	member variable buildableChairs
+	 */
+	public Chair [][] getBuildableChairs(){
+		return this.buildableChair;
+	}
+	/**
+	 * getter for finalChairs
+	 * @return	member variable finalChairs
+	 */
+	public Chair [] getFinalChairs() {
+		return this.finalChairs;
+	}
+	
+	
+	
+	/**
+	 * getter for powerSetDesks
+	 * @return	member variable powerSetDesks
+	 */
+	public Desk[][] getPowerSetDesks() {
+		return this.powerSetDesks;
+	}
+	/**
+	 * getter for buildableDesks
+	 * @return	member variable buildableDesks
+	 */
+	public Desk [][] getBuildableDesks(){
+		return this.buildableDesk;
+	}
+	/**
+	 * getter for finalDesks
+	 * @return	member variable finalDesks
+	 */
+	public Desk [] getFinalDesks() {
+		return this.finalDesks;
+	}
+	
+	
+	/**
+	 * getter for powerSetFilings
+	 * @return	member variable powerSetFilings
+	 */
+	public Filing[][] getPowerSetFiling(){
+		return this.powerSetFilings;
+	}
+	/**
+	 * getter for buildableFilings
+	 * @return	member variable buildableFilings
+	 */
+	public Filing [][] getBuildableFilings(){ 
+		return this.buildableFiling;
+	}
+	/**
+	 * getter for finalFilings
+	 * @return	member variable finalFilings
+	 */
+	public Filing [] getFinalFiling() {
+		return this.finalFilings;
+	}
+	
+	
+	/**
+	 * getter for powerSetLamps
+	 * @return	member variable powerSetLamps
+	 */
+	public Lamp[][] getPowerSetLamp(){
+		return this.powerSetLamps;
+	}
+	/**
+	 * getter for buildableLamps
+	 * @return	member variable buildableLamps
+	 */
+	public Lamp[][] getBuildableLamps(){
+		return this.buildableLamp;
+	}
+	/**
+	 * getter for finalLamps
+	 * @return	member variable finalLamps
+	 */
+	public Lamp [] getFinalLamps() {
+		return this.finalLamps;
+	}
+  
 }
