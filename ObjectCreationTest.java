@@ -964,6 +964,24 @@ public class ObjectCreationTest {
 		assertTrue("This has not preformed sort correctly for type Task from chair for multi.", Arrays.equals(Task, sort.sort("chair", 2)));	
 	}
 	
+	@Rule public ExpectedException exceptionRule = ExpectedException.none();
+	@Test
+	/**
+	 * This method will handle exception handling for sort.
+	 */
+	public void testSortChairTypeTaskException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Chair> chair = data.getChairs("Task");
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("chair", 0);
+		
+	}
+	
+	
+	
 	@Test
 	/**
 	 * This method will test sort method on the chair type Mesh and must give the cheapest output combination.
@@ -984,6 +1002,21 @@ public class ObjectCreationTest {
 		sort.powerSetChair(chair);
 		
 		assertTrue("This has not preformed sort correctly for type Mesh from chair.", Arrays.equals(Mesh, sort.sort("chair", 1)));	
+	}
+	
+	@Test
+	/**
+	 * This method will handle exception handling for sort.
+	 */
+	public void testSortChairTypeMeshException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Chair> chair = data.getChairs("Mesh");
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("chair", 0);
+		
 	}
 	
 	@Test
@@ -1045,6 +1078,20 @@ public class ObjectCreationTest {
 		
 		assertTrue("This has not preformed sort correctly for type Kneeling from chair.", Arrays.equals(Kneeling, sort.sort("chair", 3)));	
 	}
+	@Test
+	/**
+	 * 
+	 */
+	public void testSortChairTypeKneelingException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Chair> chair = data.getChairs("Kneeling");
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("chair", 0);
+		
+	}
 	
 	@Test
 	/**
@@ -1088,7 +1135,20 @@ public class ObjectCreationTest {
 		
 		assertTrue("This has not preformed sort correctly for type Executive from chair.", Arrays.equals(Executive, sort.sort("chair", 2)));	
 	}
-	
+	@Test
+	/**
+	 * 
+	 */
+	public void testSortChairTypeExecutiveException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Chair> chair = data.getChairs("Executive");
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("chair", 0);
+		
+	}
 	@Test
 	/**
 	 * This method will test sort method on the chair type Ergonomic and must give the cheapest output combination.
@@ -1133,6 +1193,21 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
+	 * 
+	 */
+	public void testSortChairTypeErgonomicException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Chair> chair = data.getChairs("Ergonomic");
+		Sort sort = new Sort();
+		sort.powerSetChair(chair);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("chair", 0);
+		
+	}
+	
+	@Test
+	/**
 	 * This method will test sort method on the desk type Traditional and must give the cheapest output combination.
 	 */
 	public void testSortDeskTypeTraditional() {
@@ -1173,6 +1248,21 @@ public class ObjectCreationTest {
 		sort.powerSetDesk(desk);
 		
 		assertTrue("This has not preformed sort correctly for type Traditional from desk.", Arrays.equals(Traditional, sort.sort("desk", 2)));
+		
+	}
+	
+	@Test
+	/**
+	 * 
+	 */
+	public void testSortDeskTypeTraditionalException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Desk> desk = data.getDesks("Traditional");
+		Sort sort = new Sort();
+		sort.powerSetDesk(desk);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("desk", 0);
 		
 	}
 	
@@ -1227,6 +1317,21 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
+	 * 
+	 */
+	public void testSortDeskTypeAdjustableException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Desk> desk = data.getDesks("Adjustable");
+		Sort sort = new Sort();
+		sort.powerSetDesk(desk);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("desk", 0);
+		
+	}
+	
+	@Test
+	/**
 	 * This method will test sort method on the desk type Standing and must give the cheapest output combination.
 	 */
 	public void testSortDeskTypeStanding() {
@@ -1262,6 +1367,22 @@ public class ObjectCreationTest {
 		
 		assertTrue("This has not preformed sort correctly for type Standing from desk.", Arrays.equals(Standing, sort.sort("desk", 3)));
 	}
+	
+	@Test
+	/**
+	 * 
+	 */
+	public void testSortDeskTypeStandingException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Desk> desk = data.getDesks("Standing");
+		Sort sort = new Sort();
+		sort.powerSetDesk(desk);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("desk", 0);
+		
+	}
+	
 	@Test
 	/**
 	 * This method will test sort method on the filing type Small and must give the cheapest output combination.
@@ -1307,7 +1428,20 @@ public class ObjectCreationTest {
 		assertTrue("This has not preformed sort correctly for type Small from filing.", Arrays.equals(Small, sort.sort("filing", 3)));		
 	}
 	
-
+	@Test
+	/**
+	 * 
+	 */
+	public void testSortFilingTypeSmallException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Filing> filing = data.getFilings("Small");
+		Sort sort = new Sort();
+		sort.powerSetFiling(filing);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("filing", 0);
+		
+	}
 	
 	@Test
 	/**
@@ -1356,6 +1490,19 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
+	 * 
+	 */
+	public void testSortFilingTypeMediumException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Filing> filing = data.getFilings("Medium");
+		Sort sort = new Sort();
+		sort.powerSetFiling(filing);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("filing", 0);
+	}
+	@Test
+	/**
 	 * This method will test sort method on the filing type Large and must give the cheapest output combination.
 	 */
 	public void testSortFilingTypeLarge() {
@@ -1391,6 +1538,20 @@ public class ObjectCreationTest {
 		sort.powerSetFiling(filing);
 		
 		assertTrue("This has not preformed sort correctly for type Large from filing.", Arrays.equals(Large, sort.sort("filing", 3)));		
+	}
+	
+	@Test
+	/**
+	 * 
+	 */
+	public void testSortFilingTypeLargeException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Filing> filing = data.getFilings("Large");
+		Sort sort = new Sort();
+		sort.powerSetFiling(filing);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("filing", 0);
 	}
 	
 	@Test
@@ -1436,6 +1597,20 @@ public class ObjectCreationTest {
 	
 	@Test
 	/**
+	 * 
+	 */
+	public void testSortLampTypeDeskException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Lamp> lamp = data.getLamps("Desk");
+		Sort sort = new Sort();
+		sort.powerSetLamp(lamp);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("lamp", 0);
+	}
+	
+	@Test
+	/**
 	 * This method will test sort method on Lamp type Swing Arm and must give the cheapest output combination.
 	 */
 	public void testSortLampTypeSwingArm() {
@@ -1471,6 +1646,20 @@ public class ObjectCreationTest {
 		sort.powerSetLamp(lamps);
 		assertTrue("This has not preformed sort correctly for type Desk.", Arrays.equals(Desk, sort.sort("lamp", 3)));
 	}
+	@Test
+	/**
+	 * 
+	 */
+	public void testSortLampTypeSwingArmException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Lamp> lamp = data.getLamps("Swing Arm");
+		Sort sort = new Sort();
+		sort.powerSetLamp(lamp);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("lamp", 0);
+	}
+	
 	
 	@Test
 	/**
@@ -1489,6 +1678,19 @@ public class ObjectCreationTest {
 		Sort sort = new Sort();
 		sort.powerSetLamp(lamps);
 		assertTrue("This has not preformed sort correctly for type Study.", Arrays.equals(Study, sort.sort("lamp", 1)));
+	}
+	@Test
+	/**
+	 * 
+	 */
+	public void testSortLampTypeStudyException() {
+		Database data = new Database(DBURL, Username, Password);
+		data.initializeConnection();
+		ArrayList<Lamp> lamp = data.getLamps("Study");
+		Sort sort = new Sort();
+		sort.powerSetLamp(lamp);
+		exceptionRule.expect(IllegalArgumentException.class);
+		sort.sort("lamp", 0);
 	}
 	
 	@Test
@@ -1514,11 +1716,6 @@ public class ObjectCreationTest {
 	
 
 	
-	//put the test back in later
-	public void testExceptionSQLDatabaseDeskTypeTask() throws SQLException{
-		Database data = new Database("jdbc:mysql://localhost/inventor", Username, Password);
-		data.initializeConnection();
-	}
 	
 	//These are helper methods
 	
