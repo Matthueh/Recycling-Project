@@ -9,7 +9,7 @@ public void testFileCreation() {
 	order.setCategory("mesh");
 	order.setType("chair");
 	order.setAmount("1");
-	String[] test = {"test1", "test2", "test3", "120"};
+	String[] test = {"C9890", "C0942", "C6748", "300"};
 	order.successfulSort(test);
 	File test = File("C:\\Users\\Alexander\\Documents\\UCalgary\\W2021\\Ensf409\\Project\\output.txt");
 	
@@ -23,7 +23,7 @@ public void correctOutput() {
 	order.setCategory("mesh");
 	order.setType("chair");
 	order.setAmount("1");
-	String[] test = {"test1", "100"};
+	String[] test = {"C0942", "175"};
 	order.successfulSort(test);
 	String testString = new String();
 	BufferedReader testFile= new BufferedReader(new FileReader("C:\\Users\\Alexander\\Documents\\UCalgary\\W2021\\Ensf409\\Project\\output.txt"));
