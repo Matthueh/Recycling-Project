@@ -11,8 +11,9 @@ import java.util.*;
 
 
 /**
+ * Program version 20.0
+ * @author Alexander Sembrat, Dylan Windsor, Matthew Ho. Group 36.
  * These tests were based off of the database we were given.
- * 
  *
  */
 
