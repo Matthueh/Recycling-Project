@@ -963,17 +963,11 @@ public class ObjectCreationTest {
 	@Rule public ExpectedException exceptionRule = ExpectedException.none();
 	@Test
 	/**
-	 * This method will handle exception handling for sort chair type task.
+	 * This method will handle exception handling for order chair type task.
 	 */
 	public void testSortChairTypeTaskException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Chair> chair = data.getChairs("Task");
-		Sort sort = new Sort();
-		sort.powerSetChair(chair);
+		Order order = new Order("chair", "Task", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("chair", 0);
-		
 	}
 	
 	
@@ -1020,19 +1014,8 @@ public class ObjectCreationTest {
 	 * This method will test sort method on the chair type Mesh and must give the cheapest output combination for multiple chairs.
 	 */
 	public void testSortChairTypeMeshMulti() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		//Expected output
-		String [] Mesh ={
-			"impossible"
-		};
-		
-		ArrayList<Chair> chair = data.getChairs("Mesh");
-
-		Sort sort = new Sort();
-		sort.powerSetChair(chair);
-		
-		assertTrue("This has not preformed sort correctly for type Mesh from chair.", Arrays.equals(Mesh, sort.sort("chair", 2)));	
+		Order order = new Order("chair", "Mesh", 0);
+		exceptionRule.expect(IllegalArgumentException.class);	
 	}
 	
 	
@@ -1079,14 +1062,8 @@ public class ObjectCreationTest {
 	 * 	This method will handle exception for sort chair type kneeling.
 	 */
 	public void testSortChairTypeKneelingException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Chair> chair = data.getChairs("Kneeling");
-		Sort sort = new Sort();
-		sort.powerSetChair(chair);
+		Order order = new Order("chair", "Kneeling", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("chair", 0);
-		
 	}
 	
 	@Test
@@ -1136,14 +1113,8 @@ public class ObjectCreationTest {
 	 * This method will test whether the sort method will throw an illegal argument exception when chair with type executive is passed.
 	 */
 	public void testSortChairTypeExecutiveException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Chair> chair = data.getChairs("Executive");
-		Sort sort = new Sort();
-		sort.powerSetChair(chair);
+		Order order = new Order("chair", "Executive", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("chair", 0);
-		
 	}
 	@Test
 	/**
@@ -1192,14 +1163,8 @@ public class ObjectCreationTest {
 	 * This method will test whether the sort method will throw and Illegal argument exception when chair type ergonomic is passed.
 	 */
 	public void testSortChairTypeErgonomicException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Chair> chair = data.getChairs("Ergonomic");
-		Sort sort = new Sort();
-		sort.powerSetChair(chair);
+		Order order = new Order("chair", "Ergonomic", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("chair", 0);
-		
 	}
 	
 	@Test
@@ -1252,14 +1217,8 @@ public class ObjectCreationTest {
 	 * This method will test the sort methods illegal argument exception for desk type traditional.
 	 */
 	public void testSortDeskTypeTraditionalException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Desk> desk = data.getDesks("Traditional");
-		Sort sort = new Sort();
-		sort.powerSetDesk(desk);
+		Order order = new Order("desk", "Traditional", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("desk", 0);
-		
 	}
 	
 	@Test
@@ -1369,13 +1328,8 @@ public class ObjectCreationTest {
 	 * This will test desk type standing for illegal argument exception in sort.
 	 */
 	public void testSortDeskTypeStandingException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Desk> desk = data.getDesks("Standing");
-		Sort sort = new Sort();
-		sort.powerSetDesk(desk);
+		Order order = new Order("desk", "Standing", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("desk", 0);
 		
 	}
 	
@@ -1429,14 +1383,8 @@ public class ObjectCreationTest {
 	 *  This will test illegal argument exception for filing type small for sort.
 	 */
 	public void testSortFilingTypeSmallException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Filing> filing = data.getFilings("Small");
-		Sort sort = new Sort();
-		sort.powerSetFiling(filing);
+		Order order = new Order("filing", "Small", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("filing", 0);
-		
 	}
 	
 	@Test
@@ -1489,13 +1437,8 @@ public class ObjectCreationTest {
 	 * This will test illegal argument exception for filing type Medium in sort.
 	 */
 	public void testSortFilingTypeMediumException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Filing> filing = data.getFilings("Medium");
-		Sort sort = new Sort();
-		sort.powerSetFiling(filing);
+		Order order = new Order("filing", "Medium", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("filing", 0);
 	}
 	@Test
 	/**
@@ -1542,13 +1485,8 @@ public class ObjectCreationTest {
 	 * This method will test sort method on filing type large and throw an illegal argument exception.
 	 */
 	public void testSortFilingTypeLargeException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Filing> filing = data.getFilings("Large");
-		Sort sort = new Sort();
-		sort.powerSetFiling(filing);
+		Order order = new Order("filing", "Large", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("filing", 0);
 	}
 	
 	@Test
@@ -1597,13 +1535,8 @@ public class ObjectCreationTest {
 	 * This method will test exception handling for Lamp type desk for illegal argument exception handling.
 	 */
 	public void testSortLampTypeDeskException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Lamp> lamp = data.getLamps("Desk");
-		Sort sort = new Sort();
-		sort.powerSetLamp(lamp);
+		Order order = new Order("lamp", "Desk", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("lamp", 0);
 	}
 	
 	@Test
@@ -1648,13 +1581,8 @@ public class ObjectCreationTest {
 	 * This method will test exception handling for Lamp type swing arm for illegal argument exception handling.
 	 */
 	public void testSortLampTypeSwingArmException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Lamp> lamp = data.getLamps("Swing Arm");
-		Sort sort = new Sort();
-		sort.powerSetLamp(lamp);
+		Order order = new Order("filing", "Swing Arm", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("lamp", 0);
 	}
 	
 	
@@ -1681,13 +1609,8 @@ public class ObjectCreationTest {
 	 * This method will test exception handling for Lamp type Study for illegal argument exception handling.
 	 */
 	public void testSortLampTypeStudyException() {
-		Database data = new Database(DBURL, Username, Password);
-		data.initializeConnection();
-		ArrayList<Lamp> lamp = data.getLamps("Study");
-		Sort sort = new Sort();
-		sort.powerSetLamp(lamp);
+		Order order = new Order("filing", "Study", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		sort.sort("lamp", 0);
 	}
 	
 	@Test
