@@ -971,6 +971,7 @@ public class ObjectCreationTest {
 	public void testSortChairTypeTaskException() {
 		Order order = new Order("chair", "Task", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+
 	}
 	
 	
@@ -1017,8 +1018,9 @@ public class ObjectCreationTest {
 	 * This method will test sort method on the chair type Mesh and must give the cheapest output combination for multiple chairs.
 	 */
 	public void testSortChairTypeMeshMulti() {
-		Order order = new Order("chair", "Mesh", 0);
 		exceptionRule.expect(IllegalArgumentException.class);	
+		Order order = new Order("chair", "Mesh", 0);
+
 	}
 	
 	
@@ -1065,8 +1067,8 @@ public class ObjectCreationTest {
 	 * 	This method will handle exception for sort chair type kneeling.
 	 */
 	public void testSortChairTypeKneelingException() {
-		Order order = new Order("chair", "Kneeling", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("chair", "Kneeling", 0);
 	}
 	
 	@Test
@@ -1116,8 +1118,9 @@ public class ObjectCreationTest {
 	 * This method will test whether the sort method will throw an illegal argument exception when chair with type executive is passed.
 	 */
 	public void testSortChairTypeExecutiveException() {
-		Order order = new Order("chair", "Executive", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("chair", "Executive", 0);
+
 	}
 	@Test
 	/**
@@ -1166,8 +1169,9 @@ public class ObjectCreationTest {
 	 * This method will test whether the sort method will throw and Illegal argument exception when chair type ergonomic is passed.
 	 */
 	public void testSortChairTypeErgonomicException() {
-		Order order = new Order("chair", "Ergonomic", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("chair", "Ergonomic", 0);
+
 	}
 	
 	@Test
@@ -1220,8 +1224,9 @@ public class ObjectCreationTest {
 	 * This method will test the sort methods illegal argument exception for desk type traditional.
 	 */
 	public void testSortDeskTypeTraditionalException() {
-		Order order = new Order("desk", "Traditional", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("desk", "Traditional", 0);
+
 	}
 	
 	@Test
@@ -1331,9 +1336,8 @@ public class ObjectCreationTest {
 	 * This will test desk type standing for illegal argument exception in sort.
 	 */
 	public void testSortDeskTypeStandingException() {
-		Order order = new Order("desk", "Standing", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
-		
+		Order order = new Order("desk", "Standing", 0);
 	}
 	
 	@Test
@@ -1386,8 +1390,8 @@ public class ObjectCreationTest {
 	 *  This will test illegal argument exception for filing type small for sort.
 	 */
 	public void testSortFilingTypeSmallException() {
-		Order order = new Order("filing", "Small", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("filing", "Small", 0);
 	}
 	
 	@Test
@@ -1440,8 +1444,9 @@ public class ObjectCreationTest {
 	 * This will test illegal argument exception for filing type Medium in sort.
 	 */
 	public void testSortFilingTypeMediumException() {
-		Order order = new Order("filing", "Medium", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("filing", "Medium", 0);
+
 	}
 	@Test
 	/**
@@ -1488,8 +1493,9 @@ public class ObjectCreationTest {
 	 * This method will test sort method on filing type large and throw an illegal argument exception.
 	 */
 	public void testSortFilingTypeLargeException() {
-		Order order = new Order("filing", "Large", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("filing", "Large", 0);
+
 	}
 	
 	@Test
@@ -1538,8 +1544,9 @@ public class ObjectCreationTest {
 	 * This method will test exception handling for Lamp type desk for illegal argument exception handling.
 	 */
 	public void testSortLampTypeDeskException() {
-		Order order = new Order("lamp", "Desk", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("lamp", "Desk", 0);
+
 	}
 	
 	@Test
@@ -1584,8 +1591,9 @@ public class ObjectCreationTest {
 	 * This method will test exception handling for Lamp type swing arm for illegal argument exception handling.
 	 */
 	public void testSortLampTypeSwingArmException() {
-		Order order = new Order("filing", "Swing Arm", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("filing", "Swing Arm", 0);
+
 	}
 	
 	
@@ -1612,8 +1620,9 @@ public class ObjectCreationTest {
 	 * This method will test exception handling for Lamp type Study for illegal argument exception handling.
 	 */
 	public void testSortLampTypeStudyException() {
-		Order order = new Order("filing", "Study", 0);
 		exceptionRule.expect(IllegalArgumentException.class);
+		Order order = new Order("filing", "Study", 0);
+
 	}
 	
 	@Test
