@@ -153,7 +153,7 @@ public class Sort {
 				counter = 0;
 				for(int i = 0; i < finalChairs.length; i++) {
 					if(finalChairs[i] != null) {
-						chairIDs[counter] = finalChairs[i].getId();
+						chairIDs[counter] = finalChairs[i].getID();
 						counter++;
 					}
 				}//adds the ID's to the array to be returned
